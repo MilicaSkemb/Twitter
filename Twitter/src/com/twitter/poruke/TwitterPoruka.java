@@ -33,17 +33,17 @@ public class TwitterPoruka {
 	 * @throws java.lang.RuntimeException u slucaju da je parametar null ili prazan String
 	 */
 	public void setKorisnik(String korisnik) {
-	if (korisnik==null || !korisnik.isEmpty())
+	if (korisnik==null || korisnik.isEmpty())
 		throw new RuntimeException("Ime korisnika mora biti uneto");
 		this.korisnik = korisnik;
 	}
+	
 	/**
 	 * Metoda koja vraca sadrzaj poruke.
 	 * @return sadrzaj poruke
 	 */
-	
 	public String getPoruka() {
-		return "poruka";
+		return poruka;
 	}
 	/**
 	 * Metoda koja postavlja novu vrednost u atribut poruka
@@ -51,8 +51,8 @@ public class TwitterPoruka {
 	 * @throws java.lang.RuntimeException  u slucaju da je parametar null ili prazan String
 	 */
 	public void setPoruka(String poruka) {
-		if (this.poruka==null || this.poruka == new String("") ||
-		this.poruka.length()>140)
+		if (poruka == null || poruka.equals("") ||
+		poruka.length()>140)
 			throw new RuntimeException("Poruka mora biti uneta i mora imati najvise 140 znakova");
 			this.poruka = poruka;
 	}
