@@ -2,19 +2,19 @@ package com.twitter.poruke;
 
 
 /**
-* Klasa definise poruku na drustvenoj mrezi Twitter0.
-* @author Milica Skembarevic
-* @version 1.0
-*
-*/
+ * Klasa definise poruku na drustvenoj mrezi Twitter0.
+ * @author Milica Skembarevic
+ * @version 1.0
+ *
+ */
 
 public class TwitterPoruka {
 	/**
-	  * Atribut ime korisnika kao String.
-	  * 
-	  */
+	 * Atribut ime korisnika kao String.
+	 * 
+	 */
 	private String korisnik;
-	
+
 	/**
 	 * Atribut sadrzaj poruke na Twitteru kao String.
 	 * 
@@ -33,11 +33,11 @@ public class TwitterPoruka {
 	 * @throws java.lang.RuntimeException u slucaju da je parametar null ili prazan String
 	 */
 	public void setKorisnik(String korisnik) {
-	if (korisnik==null || korisnik.isEmpty())
-		throw new RuntimeException("Ime korisnika mora biti uneto");
+		if (korisnik==null || korisnik.isEmpty())
+			throw new RuntimeException("Ime korisnika mora biti uneto");
 		this.korisnik = korisnik;
 	}
-	
+
 	/**
 	 * Metoda koja vraca sadrzaj poruke.
 	 * @return sadrzaj poruke
@@ -52,9 +52,9 @@ public class TwitterPoruka {
 	 */
 	public void setPoruka(String poruka) {
 		if (poruka == null || poruka.equals("") ||
-		poruka.length()>140)
+				poruka.length()>140)
 			throw new RuntimeException("Poruka mora biti uneta i mora imati najvise 140 znakova");
-			this.poruka = poruka;
+		this.poruka = poruka;
 	}
 	/**
 	 * Metoda vraca trenutne vrednosti atributa kroz jedan String.
@@ -63,4 +63,34 @@ public class TwitterPoruka {
 	public String toString(){
 		return "KORISNIK:"+korisnik+" PORUKA:"+poruka;
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof TwitterPoruka)) {
+			return false;
+		}
+		TwitterPoruka t = (TwitterPoruka) obj;
+		if (t.getKorisnik() == null) {
+			if (t.getKorisnik() != null) {
+				return false;
+			}
+		} else if (!t.getKorisnik().equals(this.korisnik)) {
+			return false;
+		}
+		if (t.getPoruka() == null) {
+			if (t.getPoruka() != null) {
+				return false;
+			}
+		} else if (!t.getPoruka().equals(this.poruka)) {
+			return false;
+		}
+		return true;
+	}
+
+
 }
